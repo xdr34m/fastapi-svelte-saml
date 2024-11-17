@@ -1,0 +1,28 @@
+networks:
+  int-network:
+    internal: true
+  ext-network:
+    internal: false
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "0.0.0.0:443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    networks:
+      - int-network
+      - ext-network
+    restart: always
+  fastapi:
+    build:
+      context: ./
+    networks:
+      - int-network
+    expose: 
+      - "8080"
+    container_name: fastapi
+    restart: always
+  

@@ -7,7 +7,7 @@ from onelogin.saml2.auth import OneLogin_Saml2_Auth
 from onelogin.saml2.settings import OneLogin_Saml2_Settings
 from onelogin.saml2.utils import OneLogin_Saml2_Utils
 
-app = FastAPI()
+app = FastAPI(root_path="/api")
 
 saml_settings = {
   "strict": False, # can set to True to see problems such as Time skew/drift
@@ -100,4 +100,4 @@ async def saml_login_callback(request: Request):
     return "Error in callback"
 
 if __name__=="__main__":
-    uvicorn.run(app,host="127.0.0.1",port=8000)
+    uvicorn.run(app,host="127.0.0.1",port=8080)
