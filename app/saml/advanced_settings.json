@@ -1,0 +1,10 @@
+{
+    "security": {
+      "authnRequestsSigned": false,
+      "logoutRequestSigned": false,
+      "logoutResponseSigned": false,
+      "wantAssertionsSigned": false,
+      "wantMessagesSigned": false,
+      "wantAssertionsEncrypted": false
+    }
+  }
